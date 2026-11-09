@@ -3,7 +3,7 @@
   'use strict';
   // Скрипт подключается из поля «Название игры», но работает только в игровом Safari.
   const PATH = window.location && window.location.pathname ? window.location.pathname : '';
-  if (!/^\\/play\\/safari\\/?$/i.test(PATH)) return;
+  if (!/^\/play\/safari\/?$/i.test(PATH)) return;
 
   const SCRIPT = document.currentScript;
   const ROOT_ID = 'heroes-of-redfox';
