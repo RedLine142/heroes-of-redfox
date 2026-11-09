@@ -41,6 +41,10 @@
       '<div class="hrof-status-divider"></div><div class="hrof-status-item"><span class="hrof-status-icon">⚔</span><span><small>ДОСТУПНО</small><b>9 земель</b></span></div>' +
       '<div class="hrof-status-divider"></div><div class="hrof-status-hint">Наведите курсор на область карты</div></div><div class="hrof-tooltip" role="status"></div>';
     host.insertBefore(root, host.firstChild);
+    // На странице карты оставляем только наш интерфейс, скрывая штатный список разделов Safari.
+    Array.from(host.children).forEach(function(child) {
+      if (child !== root) child.hidden = true;
+    });
     const style = document.createElement('link');
     style.rel = 'stylesheet';
     style.href = SCRIPT && SCRIPT.src ? SCRIPT.src.replace(/heroes-map\.js(?:\?.*)?$/, 'heroes-map.css') : 'https://cdn.jsdelivr.net/gh/RedLine142/heroes-of-redfox@main/heroes-map.css';
