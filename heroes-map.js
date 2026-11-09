@@ -8,7 +8,7 @@
   const SCRIPT = document.currentScript;
   const ROOT_ID = 'heroes-of-redfox';
   const MAP_IMAGE = 'https://kemerovo.redfoxkrsk.ru/static/up/images/mappp.png';
-  // Координаты зон заданы в пикселях исходной карты; ниже они переводятся в проценты.\n  // Поэтому при любом пропорциональном уменьшении карты зоны остаются на своих местах.\n  const MAP_WIDTH = 1672, MAP_HEIGHT = 941;
+  const MAP_WIDTH = 1672, MAP_HEIGHT = 941;
   const LOCATIONS = [
     {id:'hero',name:'Герой',subtitle:'Личный лагерь',x:640,y:420,w:100,h:60,url:'/play/safari/9049',icon:'♟'},
     {id:'castle',name:'Замок',subtitle:'Центр владений',x:530,y:222,w:195,h:148,url:'/play/safari/9050',icon:'♜'},
