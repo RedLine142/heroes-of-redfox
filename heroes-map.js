@@ -7,8 +7,8 @@
 
   const SCRIPT = document.currentScript;
   const ROOT_ID = 'heroes-of-redfox';
-  const MAP_IMAGE = 'https://kemerovo.redfoxkrsk.ru/static/up/images/mappp.png84';
-  const MAP_WIDTH = 1280, MAP_HEIGHT = 850;
+  const MAP_IMAGE = 'https://kemerovo.redfoxkrsk.ru/static/up/images/mappp.png';
+  const MAP_WIDTH = 1672, MAP_HEIGHT = 941;
   const LOCATIONS = [
     {id:'hero',name:'Герой',subtitle:'Личный лагерь',x:640,y:420,w:100,h:60,url:'/play/safari/9049',icon:'♟'},
     {id:'castle',name:'Замок',subtitle:'Центр владений',x:530,y:222,w:195,h:148,url:'/play/safari/9050',icon:'♜'},
