@@ -1,6 +1,10 @@
 /* HEROES OF REDFOX — интерактивная карта кампании */
 (() => {
   'use strict';
+  // Скрипт подключается из поля «Название игры», но работает только в игровом Safari.
+  const PATH = window.location && window.location.pathname ? window.location.pathname : '';
+  if (!/^\\/play\\/safari\\/?$/i.test(PATH)) return;
+
   const SCRIPT = document.currentScript;
   const ROOT_ID = 'heroes-of-redfox';
   const MAP_IMAGE = 'https://kemerovo.redfoxkrsk.ru/static/up/images/mappp.png84';
@@ -18,7 +22,10 @@
   ];
   function mount() {
     if (document.getElementById(ROOT_ID)) return;
-    const host = SCRIPT && SCRIPT.parentElement && !['HEAD','BODY'].includes(SCRIPT.parentElement.tagName) ? SCRIPT.parentElement : document.body;
+    // Не вставляем карту рядом с тегом подключения в поле названия игры.
+    // Сам тег <script> остаётся невидимым; интерфейс монтируется в тело страницы Safari.
+    const host = document.body;
+    if (!host) return;
     const root = document.createElement('section');
     root.id = ROOT_ID;
     root.className = 'hrof-shell';
@@ -33,8 +40,7 @@
       '<div class="hrof-statusbar"><div class="hrof-status-item"><span class="hrof-status-icon">♜</span><span><small>КАМПАНИЯ</small><b>Путь героя</b></span></div>' +
       '<div class="hrof-status-divider"></div><div class="hrof-status-item"><span class="hrof-status-icon">⚔</span><span><small>ДОСТУПНО</small><b>9 земель</b></span></div>' +
       '<div class="hrof-status-divider"></div><div class="hrof-status-hint">Наведите курсор на область карты</div></div><div class="hrof-tooltip" role="status"></div>';
-    if (host === document.body) host.insertBefore(root, document.body.firstChild);
-    else SCRIPT.insertAdjacentElement('afterend', root);
+    host.insertBefore(root, host.firstChild);
     const style = document.createElement('link');
     style.rel = 'stylesheet';
     style.href = SCRIPT && SCRIPT.src ? SCRIPT.src.replace(/heroes-map\.js(?:\?.*)?$/, 'heroes-map.css') : 'https://cdn.jsdelivr.net/gh/RedLine142/heroes-of-redfox@main/heroes-map.css';
